@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShhhQL | Privacy Engineering</title>
+  <style>
+    :root {
+      --bg: #0b0e14;
+      --panel: #141a24;
+      --border: #293242;
+      --text: #f2f5fa;
+      --muted: #98a5b8;
+      --green: #a5f3b5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    aside {
+      width: 235px;
+      padding: 28px 18px;
+      border-right: 1px solid var(--border);
+      background: #0e121a;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      margin-bottom: 44px;
+    }
+
+    .logo span { color: var(--green); }
+
+    nav a {
+      display: block;
+      padding: 13px;
+      margin: 6px 0;
+      border-radius: 8px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    nav a.active {
+      color: var(--green);
+      background: #1a2922;
+    }
+
+    main {
+      width: 100%;
+      max-width: 1250px;
+      margin: auto;
+      padding: 38px;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+
+    h1 { margin-bottom: 8px; font-size: 34px; }
+    .subtitle { color: var(--muted); line-height: 1.6; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .card, .section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .label { color: var(--muted); font-size: 13px; }
+    .value { font-size: 26px; font-weight: 750; margin-top: 12px; }
+    .note { color: var(--muted); font-size: 12px; margin-top: 8px; }
+
+    button {
+      border: 0;
+      border-radius: 8px;
+      background: var(--green);
+      color: #0b1710;
+      padding: 12px 17px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .section { margin-top: 20px; }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .status {
+      display: inline-block;
+      color: #f5cf82;
+      background: #332918;
+      border-radius: 20px;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 38px 10px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 760px) {
+      aside { width: 75px; padding: 20px 8px; }
+      .logo { font-size: 17px; text-align: center; }
+      nav a { font-size: 0; text-align: center; }
+      nav a::first-letter { font-size: 18px; }
+      main { padding: 22px 14px; }
+      h1 { font-size: 27px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <div class="logo">🤫 <span>ShhhQL</span></div>
+    <nav>
+      <a class="active" href="#overview">▦ Overview</a>
+      <a href="#discovery">⌕ Discovery</a>
+      <a href="#protection">⬡ Protection</a>
+      <a href="#audit">✓ Security Audit</a>
+      <a href="#benchmark">⌁ Benchmark</a>
+      <a href="#reports">▤ Reports</a>
+    </nav>
+  </aside>
+
+  <main id="overview">
+    <div class="eyebrow">DATABASE PRIVACY ENGINEERING</div>
+    <h1>We take data leaks personally.</h1>
+    <p class="subtitle">
+      Discover sensitive data. Understand exposure risks.
+      Verify that protection actually works.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="label">DATABASE CONNECTION</div>
+        <div class="value">Not connected</div>
+        <div class="note">MySQL integration pending</div>
+      </div>
+      <div class="card">
+        <div class="label">SENSITIVE COLUMNS</div>
+        <div class="value">—</div>
+        <div class="note">Awaiting database scan</div>
+      </div>
+      <div class="card">
+        <div class="label">SECURITY CONTROLS</div>
+        <div class="value">Not tested</div>
+        <div class="note">No controls verified yet</div>
+      </div>
+    </div>
+
+    <section class="section" id="discovery">
+      <div class="section-head">
+        <div>
+          <h2>Database Discovery</h2>
+          <p class="subtitle">
+            Identify personal data and assess potential exposure.
+          </p>
+        </div>
+        <button onclick="showNotice()">Scan Database</button>
+      </div>
+      <div class="empty" id="scan-result">
+        <div style="font-size:32px">⌕</div>
+        No scan has been performed.<br>
+        Connect an authorized MySQL database to begin.
+      </div>
+    </section>
+
+    <section class="section" id="protection">
+      <h2>Data Protection</h2>
+      <p class="subtitle">
+        Encryption · Masking · Pseudonymization · Access Control
+      </p>
+      <span class="status">Implementation pending</span>
+    </section>
+
+    <section class="section" id="audit">
+      <h2>Security Audit</h2>
+      <p class="subtitle">
+        Access controls, query safety, secret handling, and data exposure.
+      </p>
+      <span class="status">Not tested</span>
+    </section>
+
+    <section class="section" id="benchmark">
+      <h2>Performance Benchmark</h2>
+      <p class="subtitle">
+        Compare latency, throughput, errors, resource use, and recovery time.
+      </p>
+      <span class="status">Awaiting test results</span>
+    </section>
+
+    <section class="section" id="reports">
+      <h2>Reports & Evidence</h2>
+      <p class="subtitle">
+        Security findings and reproducible test evidence will appear here
+        after implementation.
+      </p>
+    </section>
+
+    <footer>
+      ShhhQL · DPR RI Final Hackathon 2026 · Development build
+    </footer>
+  </main>
+</div>
+
+<script>
+  function showNotice() {
+    document.getElementById("scan-result").textContent =
+      "Scanner belum terhubung ke backend. Ini adalah tampilan awal, bukan hasil pemindaian.";
+  }
+</script>
+</body>
+</html>
